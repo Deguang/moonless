@@ -2,14 +2,14 @@ const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const mount = require('mount-koa-routes');
 const path = require('path');
-const views = require('koa-views');
-const nunjucks = require('nunjucks');
+// const views = require('koa-views');
+// const nunjucks = require('nunjucks');
 const staticCache = require('koa-static-cache');
 
 var app = new Koa();
 app.use(bodyParser());
 
-app.use(views(__dirname, { map: {html: 'nunjucks', njk: 'nunjucks'}}))
+// app.use(views(path.join(__dirname, './app/views'), { map: {html: 'nunjucks', njk: 'nunjucks'}}))
 
 app.use(staticCache(path.join(__dirname, './public'), 
     { dynamic: true },

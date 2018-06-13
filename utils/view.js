@@ -1,4 +1,5 @@
 const nunjucks = require('nunjucks');
+const path = require('path');
 
 const createEnv = (path, opts) => {
     var autoescape = opts.autoescape && true,
@@ -6,7 +7,7 @@ const createEnv = (path, opts) => {
         watch = opts.watch || false,
         throwOnUndefined = opts.throwOnUndefined || false,
         env = new nunjucks.Environment(
-            new nunjucks.FileSystemLoader('views', {
+            new nunjucks.FileSystemLoader(path, {
                 noCache,
                 watch
             }), {
@@ -22,8 +23,7 @@ const createEnv = (path, opts) => {
     }
     return env;
 }
-
-var env = createEnv('views', {
+var env = createEnv(path.join(__dirname, '../app/views'), {
     watch: true,
     filters: {
         hex: function (n) {

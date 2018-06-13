@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+var app = require('../app');
+var http = require('http')
+
+var port = process.env.PORT || '9030';
+var server = http.createServer(app.callback()); // 区别于 express，需要增加 .callback()
+
+
+server.listen(port, () => {
+    console.log(`Server started at port: ${port}`);
+});
+server.on('error', onError);
+/**
+ * Event listener for HTTP server "error" event.
+ */
+function onError(error) {
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
+    var bind = typeof port === 'string'
+        ? 'Pipe ' + port
+        : 'Port ' + port;
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
+}

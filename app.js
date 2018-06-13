@@ -1,20 +1,21 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const mount = require('mount-koa-routes');
-const path = require('path');
+const staticFiles = require('./utils/static-files');
+// const path = require('path');
 // const views = require('koa-views');
 // const nunjucks = require('nunjucks');
-const staticCache = require('koa-static-cache');
+// const staticCache = require('koa-static-cache');
 
 var app = new Koa();
 app.use(bodyParser());
-
+app.use(staticFiles('/static/', __dirname + '/static'));
 // app.use(views(path.join(__dirname, './app/views'), { map: {html: 'nunjucks', njk: 'nunjucks'}}))
 
-app.use(staticCache(path.join(__dirname, './public'), 
-    { dynamic: true },
-    { maxAge: 365 * 24 * 60 * 60 }
-))
+// app.use(staticCache(path.join(__dirname, '/static'), 
+//     { dynamic: true },
+//     { maxAge: 365 * 24 * 60 * 60 }
+// ))
 
 // x-response-time
 app.use(async (ctx, next) => {

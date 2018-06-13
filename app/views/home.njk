@@ -1,3 +1,5 @@
-{# {% include "layouts/header.njk" ignore missing %} #}
-home body +==+ {{ msg }}
-{# {% include "layouts/footer.njk" ignore missing %} #}
+{% extends './layouts/default.njk' %}
+
+{% block content %}
+    Home.njk content!
+{% endblock %}

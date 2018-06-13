@@ -23,7 +23,7 @@ const createEnv = (path, opts) => {
     }
     return env;
 }
-var env = createEnv(path.join(__dirname, '../app/views'), {
+var env = createEnv(path.join(__dirname, '../'), {
     watch: true,
     filters: {
         hex: function (n) {

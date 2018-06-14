@@ -28,3 +28,7 @@ A personal blog.
 - 数据库引擎: mysql
 
 
+## 参考
+DB 设计 [Typecho数据库设计](http://docs.typecho.org/database)
+
+

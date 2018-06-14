@@ -1,11 +1,12 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
-const mount = require('mount-koa-routes');
+// const mount = require('mount-koa-routes');
 const staticFiles = require('./utils/static-files');
 // const path = require('path');
 // const views = require('koa-views');
 // const nunjucks = require('nunjucks');
 // const staticCache = require('koa-static-cache');
+const router = require('./app/routes/index')
 
 var app = new Koa();
 app.use(bodyParser());
@@ -33,7 +34,8 @@ app.use(async (ctx, next) => {
     console.log(`${ctx.method} ${ctx.url} - ${ms}`);
 });
 
-mount(app, __dirname + '/app/routes', true);
+// mount(app, __dirname + '/app/routes', true);
+app.use(router.routes());
 app.on('error', (err, ctx) => {
     console.log('serverError: ', err, ctx)
 })

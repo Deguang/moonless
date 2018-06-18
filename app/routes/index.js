@@ -36,10 +36,16 @@ router.get(['/admin/login', '/admin/'], async (ctx, next) => {
 });
 
 // 登录
-router.post('/login', async (ctx, next) => {
+router.post('/sign-in', async (ctx, next) => {
     let {name, password} = ctx.request.body;
-    let pwds = await query('select password from user where name ')
-    ctx.redirect('/')
+    let pwds = await query('select password from user where name =' + name);
+    if (pwds.length != 1) ctx.redirect('/admin');
+    if (pwds[0] != password) {
+        view.redirect('/admin');
+    } else {
+        view.redirect('/admin/list');
+    }
+    // ctx.redirect('/')
 });
 
 // 文章列表页（管理）

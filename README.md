@@ -3,6 +3,7 @@ A personal blog.
 
 ## TODO
 * 前端
+- [ ] 样式优化（程序员没有审美）
 - [ ] 文章列表
 - [ ] 文章展示
 - [ ] *文章分类
@@ -23,7 +24,7 @@ A personal blog.
 
 - 路由：koa-router
 - 表单解析：koa-bodyparser
-- 视图：koa-views、nunjucks
+- 视图：<del>koa-views</del>、nunjucks
 - session: koa-session-minimal、koa-mysql-session
 - 数据库引擎: mysql
 

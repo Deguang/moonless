@@ -4,24 +4,32 @@ const view = require('../../utils/view');
 const {query} = require('../../utils/mysql');
 
 
-// 首页， 文章列表页
-router.get(['/', '/index', '/home'], async (ctx, next) => {
-    let articles = await query('select * from article');
-    const v = view.render('./app/views/home.njk', {msg: 'rainning', articles});
+// 首页
+router.get(['/', '/index'], async (ctx, next) => {
+    const v = view.render('./app/views/home.njk');
     await ((ctx, v) => {
         ctx.body = v;
     })(ctx, v);
-})
+});
+
+// 文章列表页
+router.get(['/article', '/article/list'], async (ctx, next) => {
+    let articles = await query('select * from article');
+    const v = view.render('./app/views/article/list.njk', {msg: 'rainning', articles});
+    await ((ctx, v) => {
+        ctx.body = v;
+    })(ctx, v);
+});
 
 // 文章页
-router.get('/article/:id', async (ctx, next) => {
+router.get('/article/detail/:id', async (ctx, next) => {
     let articleId = ctx.params.id;
     if(!articleId) ctx.redirect('/index');
 
     let articles = await query('select * from article where id = ' + articleId + ' limit 1');
     if(articles.length !== 1) ctx.redirect('/index');
 
-    const v = view.render('./app/views/article.njk', {article: articles[0]});
+    const v = view.render('./app/views/article/detail.njk', {article: articles[0]});
     await ((ctx, v) => {
         ctx.body = v;
     })(ctx, v);

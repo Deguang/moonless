@@ -2,17 +2,9 @@
 
 {% block content %}
     Home.njk content!
-    <ul class="article-list">
-    {% for item in articles %}
-        <li class="article-item border-bottom">
-            <a href={{'/article/' + item.id}}>
-                <p>title: {{ item.title }}</p>
-                <p>tag: {{ item.tag }}</p>
-                <p>description: {{ item.description }}</p>
-                <p>content: {{ item.content }}</p>
-                <p>addtime: {{ item.addtime }}</p>
-            </a>
-        </li>
-    {% endfor%}
+    <div class="intro">
+        <h1>Moonless</h1>
+        <p>这是一个前端er的 lab。</p>
+    </div>
     </ul>
 {% endblock %}

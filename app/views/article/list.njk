@@ -5,7 +5,7 @@
     <ul class="article-list">
     {% for item in articles %}
         <li class="article-item border-bottom">
-            <a href={{'/article/' + item.id}}>
+            <a href={{'/article/detail/' + item.id}}>
                 <p>title: {{ item.title }}</p>
                 <p>tag: {{ item.tag }}</p>
                 <p>description: {{ item.description }}</p>

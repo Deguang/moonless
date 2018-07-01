@@ -49,15 +49,19 @@ router.post('/sign-in', async (ctx, next) => {
     let pwds = await query('select password from user where name =' + name);
     if (pwds.length != 1) ctx.redirect('/admin');
     if (pwds[0] != password) {
-        view.redirect('/admin');
+        ctx.da;
     } else {
-        view.redirect('/admin/list');
+        ctx.session.user = name
+        ctx.response.redirect('/admin/list');
     }
     // ctx.redirect('/')
 });
 
 // 文章列表页（管理）
 router.get('/admin/list', async (ctx, next) => {
+    if(!ctx.session.user) {
+        ctx.response.redirect('/login');
+    }
     const v = view.render('./app/views/admin/list.njk');
     await ((ctx, v) => {
         ctx.body = v;

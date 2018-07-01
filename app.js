@@ -1,5 +1,6 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
+const session = require('koa-session');
 // const mount = require('mount-koa-routes');
 const staticFiles = require('./utils/static-files');
 // const path = require('path');
@@ -11,6 +12,15 @@ const router = require('./app/routes/index')
 var app = new Koa();
 app.use(bodyParser());
 app.use(staticFiles('/static/', __dirname + '/static'));
+
+app.keys = ['sessionTestKey123321'];
+app.use(session({
+    key: 'koa:sess',
+    maxAge: 2 * 60 * 60 * 1000,
+    overwrite: true,
+    httpOnly: true,
+    signed: true
+}), app)
 // app.use(views(path.join(__dirname, './app/views'), { map: {html: 'nunjucks', njk: 'nunjucks'}}))
 
 // app.use(staticCache(path.join(__dirname, '/static'), 

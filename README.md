@@ -19,7 +19,7 @@ A personal blog.
 - [ ] 文章增删改查
 - [ ] 标签分类管理
 - [ ] DB 操作
-- [ ] export DB script
+- [*] export DB script
 
 * 开发
 - [ ] 报错捕获/提醒

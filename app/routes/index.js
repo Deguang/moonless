@@ -48,8 +48,10 @@ router.post('/sign-in', async (ctx, next) => {
     let {name, password} = ctx.request.body;
     let pwds = await query(`select password from user where username = '${name}'`);
     if (pwds.length != 1) ctx.redirect('/admin');
-    if (pwds[0] != password) {
-        ctx.da;
+    if (pwds[0].password != password) {
+        ctx.data = {
+            error: `userName or password is incorrect`
+        };
     } else {
         ctx.session.user = name
         ctx.response.redirect('/admin/list');
@@ -60,7 +62,7 @@ router.post('/sign-in', async (ctx, next) => {
 // 文章列表页（管理）
 router.get('/admin/list', async (ctx, next) => {
     if(!ctx.session.user) {
-        ctx.response.redirect('/login');
+        ctx.response.redirect('/admin/login');
     }
     const v = view.render('./app/views/admin/list.njk');
     await ((ctx, v) => {

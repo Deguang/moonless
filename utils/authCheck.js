@@ -1,3 +1,0 @@
-const needCheck = [
-    '/admin/list'
-]

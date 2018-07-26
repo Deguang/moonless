@@ -32,9 +32,9 @@ a:hover {
     border-bottom: 1px solid #CCC;
     background: #fff;
 }
-.menu {
+/* .menu { */
     /* display: inline-block; */
-}
+/* } */
 .menu ul li {
     display: inline;
 }

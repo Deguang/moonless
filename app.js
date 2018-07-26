@@ -20,7 +20,7 @@ app.use(session({
     overwrite: true,
     httpOnly: true,
     signed: true
-}), app)
+}, app))
 // app.use(views(path.join(__dirname, './app/views'), { map: {html: 'nunjucks', njk: 'nunjucks'}}))
 
 // app.use(staticCache(path.join(__dirname, '/static'), 

@@ -46,7 +46,7 @@ router.get(['/admin/login', '/admin/'], async (ctx, next) => {
 // 登录
 router.post('/sign-in', async (ctx, next) => {
     let {name, password} = ctx.request.body;
-    let pwds = await query('select password from user where name =' + name);
+    let pwds = await query(`select password from user where username = '${name}'`);
     if (pwds.length != 1) ctx.redirect('/admin');
     if (pwds[0] != password) {
         ctx.da;

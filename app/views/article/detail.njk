@@ -1,10 +1,15 @@
+{% set title = article.title %}
+{% set description = article.description %}
+{% set keywords = article.keywords %}
+
+
 {% extends '../layouts/default.njk' %}
 
 {% block content %}
     <article>
         <h1 class="page-title">{{article.title}}</h1>
         <div class="article-content">
-            {{article.content}}
+            {{article.content | mdFilter | safe}}
         </div>
         <div class="info">
             作者 Deguang 于  {{article.addtime | dateFormat}}

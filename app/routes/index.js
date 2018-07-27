@@ -7,7 +7,7 @@ const {query} = require('../../utils/mysql');
 // 首页 文章列表页
 router.get(['/', '/index', '/articles'], async (ctx, next) => {
     let articles = await query('select * from article');
-    const v = view.render('./app/views/article/list.njk', {msg: 'rainning', articles});
+    const v = view.render('./app/views/article/list.njk', {articles});
     await ((ctx, v) => {
         ctx.body = v;
     })(ctx, v);

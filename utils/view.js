@@ -1,5 +1,8 @@
 const nunjucks = require('nunjucks');
 const path = require('path');
+const markdown = require('markdown-it');
+
+const mdParser = new markdown();
 
 const createEnv = (path, opts) => {
     var autoescape = opts.autoescape && true,
@@ -26,8 +29,21 @@ const createEnv = (path, opts) => {
 var env = createEnv(path.join(__dirname, '../'), {
     watch: true,
     filters: {
-        hex: function (n) {
-            return '0x' + n.toString(16);
+        tdk: function (str, type) {
+            str = str || '';
+            switch(type) {
+                case 't':
+                    return str + (str.length ? '-' : '');
+                    break;
+                case 'd':
+                    return str || '前端开发者的开发笔记，记录前端成长道路上的点滴收获。';
+                    break;
+                case 'k':
+                    return str || 'Frontend developer, Tech blog, Moonless, Deguang, Deguang Li, 李德广, 德广, 前端开发博客';
+                    break;
+                default:
+                    return '';
+            }
         },
         dateFormat: function (d) {
             let date = new Date(d * 1000),
@@ -39,6 +55,9 @@ var env = createEnv(path.join(__dirname, '../'), {
             day < 10 && (day = '0' + day);
 
             return `${year}-${month}-${day}`;
+        },
+        mdFilter: function (md) {
+            return mdParser.render(md);
         }
     }
 });

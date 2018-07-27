@@ -28,6 +28,17 @@ var env = createEnv(path.join(__dirname, '../'), {
     filters: {
         hex: function (n) {
             return '0x' + n.toString(16);
+        },
+        dateFormat: function (d) {
+            let date = new Date(d * 1000),
+                year = date.getFullYear(),
+                month = date.getMonth() + 1,
+                day = date.getDate();
+
+            month < 10 && (month = '0' + month);
+            day < 10 && (day = '0' + day);
+
+            return `${year}-${month}-${day}`;
         }
     }
 });

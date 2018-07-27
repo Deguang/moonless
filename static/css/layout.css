@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 html {
     background: #fff;
@@ -14,40 +15,49 @@ body {
 a {
     text-decoration: none;
     color: #000;
+    border-bottom: 1px dotted #000;
 }
 a:hover {
-    color: #45b6af;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
 }
 
 .container {
     width: 90%;
-    max-width: 1200px;
-    min-width: 780px;
+    max-width: 780px;
+    min-width: 300px;
     margin: auto;
 }
 
 .header {
-    height: 20px;
     text-align: center;
     border-bottom: 1px solid #CCC;
     background: #fff;
+    line-height: 60px;
+    font-size: 24px;
 }
-/* .menu { */
-    /* display: inline-block; */
-/* } */
-.menu ul li {
-    display: inline;
+.header .code {
+    font-family: 'Source Code Pro', monospace;
 }
+
+@media (max-width: 500px) {
+    .header {
+        line-height: 30px;
+        font-size: 16px;
+    }
+    .header .code {
+        display: block;
+    }
+}
+
 .footer {
     height: 20px;
     text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: inherit;
     min-width: inherit;
     max-width: inherit;
-    border-top: 1px solid;
+    border-top: 3px double #ccc;
     background: #fff;
+    color: #999;
 }
 
 .border-top {
@@ -65,5 +75,19 @@ a:hover {
 
 .article-list {
     list-style: none;
-    padding: 10px;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.article-item a {
+    max-width: calc(100% - 100px);
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
+
+.article-item .atc-addtime {
+    font-family: 'Source Code Pro', monospace;
+    float: right;
 }

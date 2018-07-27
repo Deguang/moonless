@@ -1,10 +1,16 @@
 {% extends '../layouts/default.njk' %}
 
 {% block content %}
-    article.njk content!
-    <p>title: {{ article.title }}</p>
-    <p>tag: {{ article.tag }}</p>
-    <p>description: {{ article.description }}</p>
-    <p>content: {{ article.content }}</p>
-    <p>addtime: {{ article.addtime }}</p>
+    <article>
+        <h1 class="page-title">{{article.title}}</h1>
+        <div class="article-content">
+            {{article.content}}
+        </div>
+        <div class="info">
+            作者 Deguang 于  {{article.addtime | dateFormat}}
+        </div>
+        <div class="category">
+            类别：{{article.category}}
+        </div>
+    </article>
 {% endblock %}

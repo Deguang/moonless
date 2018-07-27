@@ -36,7 +36,7 @@ router.get(['/admin/login', '/admin/'], async (ctx, next) => {
 });
 
 // 登录
-router.post('/sign-in', async (ctx, next) => {
+router.post('/admin/login', async (ctx, next) => {
     let {name, password} = ctx.request.body;
     let pwds = await query(`select password from user where username = '${name}'`);
     if (pwds.length != 1) ctx.redirect('/admin');
@@ -52,7 +52,7 @@ router.post('/sign-in', async (ctx, next) => {
 });
 
 // 文章列表页（管理）
-router.get('/admin/list', async (ctx, next) => {
+router.get(['/admin/list', '/admin/'], async (ctx, next) => {
     if(!ctx.session.user) {
         ctx.response.redirect('/admin/login');
     }
@@ -64,7 +64,7 @@ router.get('/admin/list', async (ctx, next) => {
 
 // 404
 router.get('*', async (ctx, next) => {
-    const v = view.render('./static/404.html', {msg: 'rainning'});
+    const v = view.render('./app/views/404.njk');
     await ((ctx, v) => {
         ctx.body = v;
     })(ctx, v);

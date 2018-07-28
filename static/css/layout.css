@@ -179,21 +179,20 @@ article .category {
 }
 .article-edit .form-item label {
     width: 50px;
-    text-align: right;
     display: inline-block;
     height: inherit;
     vertical-align: top;
+    text-align: justify;
+    text-align-last: justify;
 }
+
 
 .article-edit .form-item input,
 .article-edit .form-item textarea {
-    width: calc(100% - 55px);
-    /* margin-left: 55px; */
+    width: calc(100% - 60px);
+    padding: 0 5px;
 }
 
-.article-edit .content-wrap .toolbar {
-
-}
 .article-edit .content-wrap textarea {
     width: 100%;
     border: 1px solid #ccc;
@@ -218,7 +217,7 @@ article .category {
     opacity: 0.3;
 }
 
-.preview-container pre {
+.preview-container .article-content {
     position: absolute;
     top: 5%;
     left: 0;
@@ -231,4 +230,10 @@ article .category {
     background: #fff;
     opacity: 0.9;
     overflow: scroll;
+}
+
+
+/* md 样式覆盖 */
+.markdown-body {
+    font-size: 14px !important;
 }

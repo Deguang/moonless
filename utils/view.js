@@ -1,8 +1,6 @@
 const nunjucks = require('nunjucks');
 const path = require('path');
-const markdown = require('markdown-it');
-
-const mdParser = new markdown();
+const mdParser = require('marked');
 
 const createEnv = (path, opts) => {
     var autoescape = opts.autoescape && true,
@@ -57,7 +55,7 @@ var env = createEnv(path.join(__dirname, '../'), {
             return `${year}-${month}-${day}`;
         },
         mdFilter: function (md) {
-            return mdParser.render(md);
+            return mdParser(md);
         }
     }
 });

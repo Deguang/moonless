@@ -2,13 +2,16 @@
 {% set description = article.description %}
 {% set keywords = article.keywords %}
 
+{% block link %}
+    <link href="https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css" rel="stylesheet">
+{% endblock %}
 
 {% extends '../layouts/default.njk' %}
 
 {% block content %}
     <article>
         <h1 class="page-title">{{article.title}}</h1>
-        <div class="article-content">
+        <div class="article-content markdown-body">
             {{article.content | mdFilter | safe}}
         </div>
         <div class="info">

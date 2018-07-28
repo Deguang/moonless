@@ -1,5 +1,7 @@
 {% extends '../layouts/default.njk' %}
-
+{% block link %}
+    <link href="https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css" rel="stylesheet">
+{% endblock %}
 {% block content %}
     <h1 class="page-title">文章编辑</h1>
     <div action="/admin/update-article" method="POST"   class="article-edit">
@@ -39,7 +41,7 @@
         <button>发布</button>
     </div>
     <div class="preview-container">
-        <pre></pre>
+        <div class="article-content markdown-body"></div>
     </div>
 {% endblock %}
 
@@ -63,7 +65,7 @@
         }).then(function(response) {
             return response.json();
         }).then(function(res) {
-            var pre = document.querySelector('.preview-container pre');
+            var pre = document.querySelector('.preview-container .article-content');
             pre.innerHTML = res.data.html
             preWrap.style.display = 'block';
         })

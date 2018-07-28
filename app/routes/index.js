@@ -3,7 +3,7 @@ const router = require('koa-router')();
 const view = require('../../utils/view');
 const {query} = require('../../utils/mysql');
 const fs = require('fs');
-const markdown = require('markdown-it');
+const mdParser = require('marked');
 
 
 // 首页 文章列表页
@@ -118,8 +118,7 @@ router.post('/tool/parser-md-to-html', async (ctx, next) => {
         }
         return;
     }
-    const mdParser = new markdown(),
-          html = mdParser.render(md);
+    const html = mdParser(md);
 
     ctx.response.body = {
         status: true,

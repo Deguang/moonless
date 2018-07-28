@@ -1,0 +1,7 @@
+{% set title = '关于' %}
+{% extends './layouts/default.njk' %}
+
+{% block content %}
+    <h1 class="page-title">关于</h1>
+    {{content | mdFilter | safe}}
+{% endblock %}}

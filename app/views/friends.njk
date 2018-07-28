@@ -1,0 +1,7 @@
+{% set title = '友情链接' %}
+{% extends './layouts/default.njk' %}
+
+{% block content %}
+    <h1 class="page-title">友链</h1>
+    {{content | mdFilter | safe}}
+{% endblock %}}

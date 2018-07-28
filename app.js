@@ -15,7 +15,7 @@ app.use(staticFiles('/static/', __dirname + '/static'));
 
 app.keys = ['sessionTestKey123321'];
 app.use(session({
-    key: 'koa:sess',
+    key: 'Moon:sess',
     maxAge: 2 * 60 * 60 * 1000,
     overwrite: true,
     httpOnly: true,
@@ -46,24 +46,8 @@ app.use(async (ctx, next) => {
 
 // mount(app, __dirname + '/app/routes', true);
 app.use(router.routes());
-app.on('error', (err, ctx) => {
+app.on('error', async (err, ctx) => {
     console.log('serverError: ', err, ctx)
 })
 
-// app.use(async(ctx, next) => {
-//     try {
-//       await next()
-//       const status = ctx.status || 404
-//       if (status === 404) {
-//           ctx.throw(404)
-//       }
-//     } catch (err) {
-//       ctx.status = err.status || 500
-//       if (ctx.status === 404) {
-//         await ctx.render('./public/404')
-//       } else {
-//         await ctx.render('./public/500')
-//       }
-//     }
-//   })
 module.exports = app;

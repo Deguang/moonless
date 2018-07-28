@@ -1,1 +1,21 @@
-this is admin njk
+{% extends '../layouts/default.njk' %}
+
+{% block content %}
+    <h1 class="page-title">管理</h1>
+    <ul class="article-list">
+    {% for item in articles %}
+        <li class="article-item">
+            {{ item.title }}(view:{{item.view_count}})
+            <span class="atc-addtime">{{ item.addtime | dateFormat }}</span>
+            <div>
+                <a href="/admin/edit/{{item.id}}">编辑</a>
+                {% if item.status == 0 %}
+                <a href="">发布</a>
+                {% else %}
+                <a href="">取消发布</a>
+                {% endif %}
+            </div>
+        </li>
+    {% endfor%}
+    </ul>
+{% endblock %}

@@ -1,6 +1,3 @@
-{% set title = article.title %}
-{% set description = article.description %}
-{% set keywords = article.keywords %}
 {% extends '../layouts/default.njk' %}
 
 {% block content %}
@@ -8,7 +5,7 @@
     <ul class="article-list">
     {% for item in articles %}
         <li class="article-item">
-            <a href={{'/article/detail/' + item.id}} title={{item.title}}>
+            <a href={{'/article/detail/' + item.slug}} title="{{item.title}}">
                 {{ item.title }}
             </a>
             <span class="atc-addtime">{{ item.addtime | dateFormat }}</span>

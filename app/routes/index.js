@@ -94,13 +94,18 @@ router.get('/admin/edit/:id', async (ctx, next) => {
 router.post('/admin/save-article', async (ctx, next) => {
     const req = ctx.request.body;
     if(req.id) {
-        await query(`update article set title = ?, description = ?, keywords = ?, slug = ?, content = ?, status = ?, category_id = ?, modtime = ? where id = ?`, [req.title, req.description, req.keywords, req.slug, req.content, req.status, req.category, (new Date().getTime() + '').substr(0, 10), req.id])
+        await query(`update article set title = ?, description = ?, keywords = ?, slug = ?, content = ?, status = ?, category_id = ?, modtime = ? where id = ?`, [req.title, req.description, req.keywords, req.slug, req.content, req.status, req.category_id, (new Date().getTime() + '').substr(0, 10), req.id])
     } else {
-        await query(`INSERT article set ?`, {...req})
+        await query(`INSERT article set ?`, {...req, addtime: (new Date().getTime() + '').substr(0, 10)}).then(res => {
+            req.id = res.insertId;
+        })
     }
     ctx.response.body = {
         status: true,
-        message: '保存成功'
+        message: '保存成功',
+        data: {
+            id: req.id
+        }
     }
 })
 

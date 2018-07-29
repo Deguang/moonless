@@ -8,7 +8,7 @@ const mdParser = require('marked');
 
 // 首页 文章列表页
 router.get(['/', '/index', '/articles'], async (ctx, next) => {
-    let articles = await query('select * from article order by addtime desc');
+    let articles = await query('select * from article where status = 1 order by addtime desc');
     const v = view.render('./app/views/article/list.njk', {articles});
     await ((ctx, v) => {
         ctx.body = v;
@@ -20,8 +20,11 @@ router.get('/article/detail/:slug', async (ctx, next) => {
     let slug = ctx.params.slug;
     if(!slug) ctx.redirect('/index');
 
-    let articles = await query(`select * from article where slug = '${slug}' limit 1`);
-    if(articles.length !== 1) ctx.redirect('/index');
+    let articles = await query(`select * from article where slug = '${slug}' and status = 1 limit 1`);
+    if(articles.length !== 1) {
+        next();
+        return;
+    }
 
     const v = view.render('./app/views/article/detail.njk', {article: articles[0]});
     await ((ctx, v) => {
@@ -72,9 +75,13 @@ router.get('/admin/edit/:id', async (ctx, next) => {
     let id = ctx.params.id;
     if(!id) ctx.redirect('/admin/list');
 
-    let articles = await query(`select * from article where id = '${id}' limit 1`);
-    if(articles.length !== 1) ctx.redirect('/index');
-
+    let articles;
+    if(id == 'new') {
+        articles = [{}];
+    } else {
+        articles = await query(`select * from article where id = '${id}' limit 1`);
+        if(articles.length !== 1) ctx.redirect('/admin/list');
+    }
     let categories = await query(`select * from category`);
 
     const v = view.render('./app/views/admin/edit.njk', {article: articles[0], categories});
@@ -82,6 +89,21 @@ router.get('/admin/edit/:id', async (ctx, next) => {
         ctx.body = v;
     })(ctx, v);
 });
+
+// 保存文章
+router.post('/admin/save-article', async (ctx, next) => {
+    const req = ctx.request.body;
+    if(req.id) {
+        await query(`update article set title = ?, description = ?, keywords = ?, slug = ?, content = ?, status = ?, category_id = ?, modtime = ? where id = ?`, [req.title, req.description, req.keywords, req.slug, req.content, req.status, req.category, (new Date().getTime() + '').substr(0, 10), req.id])
+    } else {
+        await query(`INSERT article set ?`, {...req})
+    }
+    ctx.response.body = {
+        status: true,
+        message: '保存成功'
+    }
+})
+
 
 // 关于
 router.get('/about', async (ctx, next) => {

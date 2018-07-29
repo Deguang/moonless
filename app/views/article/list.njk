@@ -8,7 +8,7 @@
             <a href={{'/article/detail/' + item.slug}} title="{{item.title}}">
                 {{ item.title }}
             </a>
-            <span class="atc-addtime">{{ item.addtime | dateFormat }}</span>
+            <span class="atc-addtime float-right">{{ item.addtime | dateFormat }}</span>
         </li>
     {% endfor%}
     </ul>

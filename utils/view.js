@@ -56,6 +56,12 @@ var env = createEnv(path.join(__dirname, '../'), {
         },
         mdFilter: function (md) {
             return mdParser(md);
+        },
+        boolean: function (s) {
+            if(typeof s != 'boolean') {
+                s = !!s;
+            }
+            return s;
         }
     }
 });

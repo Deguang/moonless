@@ -4,10 +4,10 @@
 {% endblock %}
 {% block content %}
     <h1 class="page-title">文章编辑</h1>
-    <div action="/admin/update-article" method="POST"   class="article-edit">
+    <form action="/admin/update-article" method="POST"   class="article-edit" onsubmit="return func()">
         <div class="form-item hide">
-            <label for="title">ID</label>
-            <input type="text" name="it" value="{{article.id}}">
+            <label for="id">ID</label>
+            <input type="text" name="id" value="{{article.id}}">
         </div>
         <div class="form-item">
             <label for="title">标题</label>
@@ -25,21 +25,28 @@
             <label for="description">描述</label>
             <textarea name="description" minlength="1" maxlength="300" rows="1">{{article.description}}</textarea>
         </div>
-        <div class="form-item">
+        <div class="form-item half">
             <label for="category">类别</label>
             <select name="category">
             {% for item in categories %}
-                <option value="item.id">{{item.name}}</option>
+                {% if item.id == article.category_id %}
+                    <option value="{{item.id}}" selected>{{item.name}}</option>
+                {% else %}
+                    <option value="{{item.id}}">{{item.name}}</option>
+                {% endif %}
             {% endfor %}
             </select>
+        </div>
+        <div class="form-item half">
+            <label for="status">发布</label>
+            <input type="checkbox" name="status" value="{{article.status}}" checked={{article.status | boolean}}>
         </div>
         <div class="form-item content-wrap">
             <textarea name="content" rows="50">{{article.content}}</textarea>
         </div>
         <button class="preview">预览</button>
-        <button>保存草稿</button>
-        <button>发布</button>
-    </div>
+        <button class="save">保存</button>
+    </form>
     <div class="preview-container">
         <div class="article-content markdown-body"></div>
     </div>
@@ -47,12 +54,17 @@
 
 {% block js %}
 <script>
+    function func(){
+        return false;
+    }
     var preBtn = document.querySelector('.preview');
     var preWrap = document.querySelector('.preview-container');
 
     preBtn.onclick = preview;
-    preWrap.onclick = function () {
+    preWrap.onclick = function (e) {
+        e.preventDefault();
         preWrap.style.display = 'none';
+        return false;
     }
     function preview() {
         var md = document.querySelector("textarea[name='content']").value;
@@ -69,6 +81,36 @@
             pre.innerHTML = res.data.html
             preWrap.style.display = 'block';
         })
+    }
+
+    var saveBtn = document.querySelector('.save');
+    saveBtn.onclick = function (e) {
+        e.preventDefault();
+        var form = document.querySelector('.article-edit'),
+            formData = {
+                id: form.querySelector("[name='id']").value,
+                title: form.querySelector("[name='title']").value,
+                description: form.querySelector("[name='description']").value,
+                keywords: form.querySelector("[name='keywords']").value,
+                slug: form.querySelector("[name='slug']").value,
+                content: form.querySelector("[name='content']").value,
+                category: form.querySelector("[name='category']").selectedIndex,
+                status: form.querySelector("[name='status']").checked ? 1 : 0,
+            };
+        fetch('/admin/save-article', {
+            headers: new Headers({'Content-Type': 'application/json'}),
+            method: 'POST',
+            body: JSON.stringify(formData)
+        }).then(function(response) {
+            return response.json();
+        }).then(function(res) {
+            if(!res.status) {
+                console.log(res.message);
+            } else {
+                console.log(res.message);
+            }
+        })
+        return false;
     }
 
 </script>

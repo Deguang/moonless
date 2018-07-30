@@ -25,8 +25,9 @@ router.get('/article/detail/:slug', async (ctx, next) => {
         next();
         return;
     }
-
-    const v = view.render('./app/views/article/detail.njk', {article: articles[0]});
+    let article = articles[0];
+    query(`update article set view_count = ? where id = ?`, [article.view_count+1, article.id]);
+    const v = view.render('./app/views/article/detail.njk', {article: article});
     await ((ctx, v) => {
         ctx.body = v;
     })(ctx, v);

@@ -113,7 +113,7 @@ router.post('/admin/save-article', async (ctx, next) => {
 
 // 关于
 router.get('/about', async (ctx, next) => {
-    const content = fs.readFileSync('static/md/about.md', 'utf8', function(err, data) {
+    const content = fs.readFileSync(path.join(__dirname, '../../static/md/about.md'), 'utf8', function(err, data) {
         if (err) next();
         return data;
     });
@@ -125,7 +125,7 @@ router.get('/about', async (ctx, next) => {
 
 // 友链
 router.get('/friends', async (ctx, next) => {
-    const content = fs.readFileSync('static/md/friends.md', 'utf8', function(err, data) {
+    const content = fs.readFileSync(path.join(__dirname, '../../static/md/friends.md'), 'utf8', function(err, data) {
         if (err) next();
         return data;
     });

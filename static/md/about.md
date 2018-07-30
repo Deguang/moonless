@@ -1,3 +1,13 @@
-## 
-一个前端开发者的个人站点；
-* [Github](https://github.com/Deguang);
+## 德广
+
+一个前端开发工程师；
+
+从事前端相关开发工作，关注行业发展；
+
+[Github](https://github.com/Deguang);
+
+## 博客初衷
+
+技术道路上的成长拾遗；
+
+与君交流学习；

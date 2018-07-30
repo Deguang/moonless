@@ -1,7 +1,13 @@
 {% set title = '友情链接' %}
 {% extends './layouts/default.njk' %}
 
+{% block link %}
+    <link href="https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
     <h1 class="page-title">友链</h1>
-    {{content | mdFilter | safe}}
+    <div class="article-content markdown-body">
+        {{content | mdFilter | safe}}
+    </div>
 {% endblock %}}

@@ -1,6 +1,7 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const session = require('koa-session');
+const compress = require('koa-compress');
 // const mount = require('mount-koa-routes');
 const staticFiles = require('./utils/static-files');
 // const path = require('path');
@@ -12,6 +13,14 @@ const router = require('./app/routes/index')
 var app = new Koa();
 app.use(bodyParser());
 app.use(staticFiles('/static/', __dirname + '/static'));
+
+app.use(compress({
+    filter: function (content_type) {
+        return /text/i.test(content_type)
+    },
+    threshold: 2048,
+    flush: require('zlib').Z_SYNC_FLUSH
+}))
 
 app.keys = ['sessionTestKey123321'];
 app.use(session({

@@ -1,6 +1,8 @@
 # moonless
 A personal blog.
 
+http://blog.lideguang.com
+
 ## TODO
 * 前端
 - [x] 样式优化（程序员没有审美）

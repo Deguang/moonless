@@ -108,6 +108,23 @@ router.post('/admin/save-article', async (ctx, next) => {
             id: req.id
         }
     }
+});
+
+// 更新文章状态（发布、取消发布）
+router.post('/admin/change-article-status', async (ctx, next) => {
+    const req = ctx.request.body;
+    if(!req.id) {
+        ctx.response.body = {
+            status: false,
+            message: '参数异常'
+        }
+        return;
+    }
+    await query(`update article set status = ? where id = ?`, [req.status, req.id]);
+    ctx.response.body = {
+        status: true,
+        message: '更新成功'
+    }
 })
 
 

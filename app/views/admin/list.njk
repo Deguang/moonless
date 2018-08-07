@@ -6,7 +6,7 @@
     <ul class="article-list">
     {% for item in articles %}
         <li class="article-item">
-            {{ item.title }}({{item.view_count}}℃)
+            {{ item.title }} ({{item.view_count}}℃)
             <span class="atc-addtime float-right">{{ item.addtime | dateFormat }}</span>
             <div>
                 <a href="/admin/edit/{{item.id}}">编辑</a>

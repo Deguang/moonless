@@ -260,3 +260,6 @@ article .category {
 .markdown-body {
     font-size: 14px !important;
 }
+.markdown-body ul {
+    list-style: initial;
+}

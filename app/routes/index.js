@@ -25,9 +25,10 @@ router.get('/article/detail/:slug', async (ctx, next) => {
         next();
         return;
     }
+    let categories = await query(`select * from category`);
     let article = articles[0];
     query(`update article set view_count = ? where id = ?`, [article.view_count+1, article.id]);
-    const v = view.render('./app/views/article/detail.njk', {article: article});
+    const v = view.render('./app/views/article/detail.njk', {article,categories});
     await ((ctx, v) => {
         ctx.body = v;
     })(ctx, v);

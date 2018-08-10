@@ -2,9 +2,12 @@
 
 前端开发工程师；
 
-从事前端相关开发工作，熟悉主流开发框架；关注行业发展，拥抱 PWA WebAssembly Flutter 等技术给前端带来的变化；
+从事前端相关开发工作，熟悉主流开发框架；
 
-[Github](https://github.com/Deguang);
+关注行业发展，拥抱 PWA WebAssembly Flutter 等技术给前端带来的变化；
+
+* [Github](https://github.com/Deguang);
+* [Email](mailto:better_li@live.com)
 
 ## 博客初衷
 

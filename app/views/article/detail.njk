@@ -18,7 +18,7 @@
             作者 Deguang 于  {{article.addtime | dateFormat}}
         </div>
         <div class="category">
-            类别：{{article.category}}
+            类别：{{article.category_id | mapId(categories)}}
         </div>
     </article>
 {% endblock %}

@@ -62,6 +62,16 @@ var env = createEnv(path.join(__dirname, '../'), {
                 s = !!s;
             }
             return s;
+        },
+        mapId: function (id, arr) {
+            let res;
+            arr.some( item => {
+                if (item.id == id) {
+                    res = item.name
+                    return true;
+                }
+            })
+            return res;
         }
     }
 });

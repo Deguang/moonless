@@ -34,6 +34,15 @@ router.get('/article/detail/:slug', async (ctx, next) => {
     })(ctx, v);
 });
 
+// 分类 文章列表页
+router.get('/category', async (ctx, next) => {
+    let articles = await query('select * from article where status = 1 order by addtime desc');
+    const v = view.render('./app/views/category/list.njk', {articles});
+    await ((ctx, v) => {
+        ctx.body = v;
+    })(ctx, v);
+});
+
 // 登录页
 router.get('/admin/login', async (ctx, next) => {
     const v = view.render('./app/views/admin/login.njk');

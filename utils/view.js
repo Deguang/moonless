@@ -34,10 +34,10 @@ var env = createEnv(path.join(__dirname, '../'), {
                     return str + (str.length ? '-' : '');
                     break;
                 case 'd':
-                    return str || '前端开发者的开发笔记，记录前端成长道路上的点滴收获。';
+                    return str || '李德广的技术博客，记录技术成长道路上的点滴收获。';
                     break;
                 case 'k':
-                    return str || 'Frontend developer, Tech blog, Moonless, Deguang, Deguang Li, 李德广, 德广, 前端开发博客';
+                    return str || 'Frontend developer, Tech blog, Moonless, Deguang, Deguang Li, 李德广, 德广, 前端开发博客，前端技术博客';
                     break;
                 default:
                     return '';

@@ -34,7 +34,7 @@ var env = createEnv(path.join(__dirname, '../'), {
                     return str + (str.length ? '-' : '');
                     break;
                 case 'd':
-                    return str || '码路 —— 李德广的技术博客，记录一路走来的风景，成为更好的开发者。';
+                    return str || '码路，李德广的技术博客。记录一路走来的风景，成为更好的开发者。';
                     break;
                 case 'k':
                     return str || 'Frontend developer, Tech blog, 码路, Deguang, Deguang Li, 李德广, 德广, 前端开发博客, 前端技术博客,';

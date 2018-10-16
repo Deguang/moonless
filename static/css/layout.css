@@ -107,6 +107,7 @@ ul {
 .header .title .code {
     font-family: 'Source Code Pro', monospace;
     white-space: nowrap;
+    font-size: 14px;
 }
 
 .header nav ul {

@@ -15,7 +15,9 @@
             {{article.content | mdFilter | safe}}
         </div>
         <div class="info">
-            作者 Deguang 于  {{article.addtime | dateFormat}}
+            作者：Deguang <br>
+            创建时间：{{article.addtime | dateFormat}} <br>
+            修改时间：{{article.modtime | dateFormat}}
         </div>
         <div class="category">
             类别：{{article.category_id | mapId(categories)}}

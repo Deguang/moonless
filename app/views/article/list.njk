@@ -2,6 +2,11 @@
 
 {% block content %}
     <h1 class="page-title">文章</h1>
+    {% if category %}
+    <div class="category">
+        类别：<a href="/">{{category | mapId(categories)}}</a>
+    </div>
+    {% endif %}
     <ul class="article-list">
     {% for item in articles %}
         <li class="article-item">
@@ -11,5 +16,10 @@
             <span class="atc-addtime float-right">{{ item.addtime | dateFormat }}</span>
         </li>
     {% endfor%}
+    {% if articles.length === 0 %}
+        <li class="article-item">
+            该类别下暂无文章
+        <li>
+    {% endif %}
     </ul>
 {% endblock %}

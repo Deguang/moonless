@@ -19,8 +19,8 @@
             创建时间：{{article.addtime | dateFormat}} <br>
             修改时间：{{article.modtime | dateFormat}}
         </div>
-        <div class="category">
-            类别：{{article.category_id | mapId(categories)}}
+        <div class="category-search">
+            类别：<a href={{'/?category=' + article.category_id}}>{{article.category_id | mapId(categories)}}</a>
         </div>
     </article>
 {% endblock %}

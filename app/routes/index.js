@@ -8,8 +8,10 @@ const mdParser = require('marked');
 
 // 首页 文章列表页
 router.get(['/', '/index', '/articles'], async (ctx, next) => {
-    let articles = await query('select * from article where status = 1 order by addtime desc');
-    const v = view.render('./app/views/article/list.njk', {articles});
+    let category = ctx.query.category
+    let articles = await query(`select * from article where status = 1 ${category ? `and category_id = ${category}` : '' } order by addtime desc`);
+    let categories = await query(`select * from category`);
+    const v = view.render('./app/views/article/list.njk', {articles, category, categories});
     await ((ctx, v) => {
         ctx.body = v;
     })(ctx, v);

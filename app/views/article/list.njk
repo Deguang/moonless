@@ -2,6 +2,11 @@
 
 {% block content %}
     <h1 class="page-title">文章</h1>
+    {% if category %}
+    <div class="category">
+        类别：<a href="/" class="category">{{category | mapId(categories)}}</a>
+    </div>
+    {% endif %}
     <ul class="article-list">
     {% for item in articles %}
         <li class="article-item">

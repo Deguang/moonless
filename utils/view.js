@@ -64,7 +64,7 @@ var env = createEnv(path.join(__dirname, '../'), {
             return s;
         },
         mapId: function (id, arr) {
-            let res;
+            let res = id;
             arr.some( item => {
                 if (item.id == id) {
                     res = item.name

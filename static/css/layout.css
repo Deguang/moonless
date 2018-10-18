@@ -161,6 +161,10 @@ h1.page-title {
     border-bottom: 1px solid #000;
 }
 
+.category a:hover {
+    text-decoration-line: line-through;
+}
+
 /* 文章列表 */
 
 .add-article {
@@ -192,7 +196,7 @@ h1.page-title {
 }
 
 article .info,
-article .category {
+article .category-search {
     color: #999;
 }
 

@@ -17,6 +17,7 @@ http://blog.lideguang.com
 - [x] 文章新增/编辑
 - [ ] *草稿
 - [ ] 操作提醒（message）
+- [ ] 图片上传（cloudinary)
 
 * 服务
 - [x] 文章列表查询
@@ -39,6 +40,7 @@ http://blog.lideguang.com
 - session: koa-session-minimal、koa-mysql-session
 - 数据库引擎: mysql
 - Gzip: compress zlib
+- 图床：Cloudinary(免费，国内访问OK)
 
 
 ## 参考

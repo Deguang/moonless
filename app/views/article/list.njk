@@ -1,4 +1,5 @@
 {% extends '../layouts/default.njk' %}
+{% set title = category | mapId(categories) %}
 
 {% block content %}
     <h1 class="page-title">文章</h1>

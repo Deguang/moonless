@@ -17,7 +17,7 @@ http://blog.lideguang.com
 - [x] 文章新增/编辑
 - [ ] *草稿
 - [ ] 操作提醒（message）
-- [ ] 图片上传（cloudinary)
+- [ ] 图片上传（cloudinary or local upload)
 
 * 服务
 - [x] 文章列表查询

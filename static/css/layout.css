@@ -166,7 +166,7 @@ h1.page-title {
 }
 
 /* 文章列表 */
-
+.add-source,
 .add-article {
     position: absolute;
     top: 5px;

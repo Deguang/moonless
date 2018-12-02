@@ -1,0 +1,19 @@
+{% extends '../../layouts/default.njk' %}
+
+{% block content %}
+    <h1 class="page-title">资源管理</h1>
+    <a href="javascript:void(0)" class="add-source">添加资源</a>
+    <ul class="source-list">
+    {% for item in sources %}
+        <li class="source-item">
+            {{ item.title }} - {{ item.url }}
+        </li>
+    {% endfor%}
+    </ul>
+{% endblock %}
+
+{% block js %}
+<script>
+
+</script>
+{% endblock %}

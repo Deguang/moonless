@@ -139,6 +139,17 @@ router.post('/admin/change-article-status', async (ctx, next) => {
     }
 })
 
+// 图片管理
+router.get('/admin/oss', async (ctx, next) => {
+    if(!ctx.session.user) {
+        ctx.response.redirect('/admin/login');
+    }
+    let sources = await query('select * from oss order by addtime desc');
+    const v = view.render('./app/views/admin/oss/list.njk', {sources});
+    await ((ctx, v) => {
+        ctx.body = v;
+    })(ctx, v);
+})
 
 // 关于
 router.get('/about', async (ctx, next) => {

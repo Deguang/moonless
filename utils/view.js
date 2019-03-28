@@ -1,6 +1,10 @@
 const nunjucks = require('nunjucks');
 const path = require('path');
-const mdParser = require('marked');
+const marked = require('marked')
+
+const mdParser = marked.setOptions({
+    highlight: (code) => require('highlight.js').highlightAuto(code).value
+})
 
 const createEnv = (path, opts) => {
     var autoescape = opts.autoescape && true,

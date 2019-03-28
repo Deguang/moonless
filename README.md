@@ -9,6 +9,7 @@ http://blog.lideguang.com
 - <del>[ ] 首页</del>
 - [x] 文章列表
 - [x] 文章展示
+- [x] 语法高亮
 - [ ] 文章分类
 - [ ] 标签
 - [x] 登录管理

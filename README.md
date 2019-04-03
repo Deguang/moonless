@@ -26,6 +26,7 @@ http://blog.lideguang.com
 - [ ] 标签/分类管理
 - [x] DB 操作
 - [x] export DB script
+- [ ] emoji 支持
 
 * 开发
 - [ ] 报错捕获/提醒

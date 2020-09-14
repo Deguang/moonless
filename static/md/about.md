@@ -20,6 +20,8 @@ To be a better programmer.
 
 ## 其他
 
+[Vue pdf readr](https://github.com/Deguang/vue-pdf-reader)：Vue pdf 预览组件
+
 [Chrome插件 Keep scroll sync](https://chrome.google.com/webstore/detail/keep-scroll-sync/lblfgppmhibloglgndekfdhmbfbdlndl): 跨设置同步 Chrome 页面浏览进度
 
 

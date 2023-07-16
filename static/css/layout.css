@@ -191,6 +191,7 @@ h1.page-title {
 
 .article-item .atc-addtime {
     font-family: 'Source Code Pro', monospace;
+    line-height: 32px;
 }
 
 /* 文章详情 */

@@ -175,7 +175,7 @@ h1.page-title {
 
 .article-list {
     list-style: none;
-    padding: 4px 0 10px;
+    padding: 8px 0 10px;
     font-size: 14px;
 }
 
@@ -184,6 +184,9 @@ h1.page-title {
     display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 24px;
+    padding: 4px 0;
+    font-size: 16px;
 }
 
 .article-item .atc-addtime {
@@ -262,9 +265,9 @@ article .category-search {
 
 
 /* md 样式覆盖 */
-.markdown-body {
-    font-size: 14px !important;
-}
+/* .markdown-body {
+    font-size: 16px !important;
+} */
 .markdown-body ul {
     list-style: initial;
 }
